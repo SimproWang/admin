@@ -19,13 +19,12 @@ public class UserController {
 	@GetMapping("/list")
 	public ModelAndView list(Model model) {
 		model.addAttribute(userService.listUsers());
-		return new ModelAndView("/user/tables", "userModel", model);
+		return new ModelAndView("/user/userList", "userModel", model);
 	}
 	
-	@GetMapping("/detail")
-	public ModelAndView detail(Model model) {
-		
-		return new ModelAndView("/user/userCenter", "userDetailModel", model);
+	@GetMapping("/add")
+	public ModelAndView add(Model model) {
+		return new ModelAndView("/user/addUser", "", model);
 	}
 	
 }

@@ -1,609 +1,419 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-	<head th:replace="~{fragments/header :: header}"></head>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
-	<body class="no-skin">
-		<div class="main-container" id="main-container">
-			<div th:replace="~{fragments/left :: left}">...</div>
-
-			<div class="main-content">
-				<div class="breadcrumbs" id="breadcrumbs">
-					<script type="text/javascript">
-						try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-					</script>
-	
-					<ul class="breadcrumb">
-						<li>
-							<i class="ace-icon fa fa-home home-icon"></i>
-							<a href="#">Home</a>
-						</li>
-						<li class="active">Dashboard</li>
-					</ul><!-- /.breadcrumb -->
-	
-					<div class="nav-search" id="nav-search">
-						<form class="form-search">
-							<span class="input-icon">
-								<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-								<i class="ace-icon fa fa-search nav-search-icon"></i>
-							</span>
-						</form>
-					</div><!-- /.nav-search -->
-				</div>
-	
-				<div class="page-content">
-					<div class="ace-settings-container" id="ace-settings-container">
-						<div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
-							<i class="ace-icon fa fa-cog bigger-150"></i>
+<head>
+    <title> hAdmin- 主页</title>
+</head>
+<head th:replace="~{fragments/header :: header}"></head>
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    <div id="wrapper">
+        <!--左侧导航开始-->
+        <div th:replace="~{fragments/menu :: menu}"></div>
+        <!--左侧导航结束-->
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+			<div th:replace="~{fragments/navbar :: navbar}"></div>  
+			          
+            <div class="wrapper wrapper-content gray-bg">
+		        <div class="row">
+		            <div class="col-sm-12">
+		            	<div class="alert alert-block alert-success">
+							<button type="button" class="close" data-dismiss="alert">
+								<i class="ace-icon fa fa-times"></i>
+							</button>
+							<i class="ace-icon fa fa-check green"></i>
+							Welcome to<strong class="green">密友串串后台管理器</strong>，下面开始一天的快乐工作。
 						</div>
-	
-						<div class="ace-settings-box clearfix" id="ace-settings-box">
-							<div class="pull-left width-50">
-								<div class="ace-settings-item">
-									<div class="pull-left">
-										<select id="skin-colorpicker" class="hide">
-											<option data-skin="no-skin" value="#438EB9">#438EB9</option>
-											<option data-skin="skin-1" value="#222A2D">#222A2D</option>
-											<option data-skin="skin-2" value="#C6487E">#C6487E</option>
-											<option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
-										</select>
-									</div>
-									<span>&nbsp; Choose Skin</span>
-								</div>
-	
-								<div class="ace-settings-item">
-									<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
-									<label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
-								</div>
-	
-								<div class="ace-settings-item">
-									<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
-									<label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
-								</div>
-	
-								<div class="ace-settings-item">
-									<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
-									<label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
-								</div>
-	
-								<div class="ace-settings-item">
-									<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
-									<label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
-								</div>
-	
-								<div class="ace-settings-item">
-									<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
-									<label class="lbl" for="ace-settings-add-container">
-										Inside
-										<b>.container</b>
-									</label>
-								</div>
-							</div><!-- /.pull-left -->
-	
-							<div class="pull-left width-50">
-								<div class="ace-settings-item">
-									<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" />
-									<label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
-								</div>
-	
-								<div class="ace-settings-item">
-									<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" />
-									<label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
-								</div>
-	
-								<div class="ace-settings-item">
-									<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" />
-									<label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
-								</div>
-							</div><!-- /.pull-left -->
-						</div><!-- /.ace-settings-box -->
-					</div><!-- /.ace-settings-container -->
-	
-					<div class="page-header">
-						<h1>
-							Dashboard
-							<small>
-								<i class="ace-icon fa fa-angle-double-right"></i>
-								overview &amp; stats
-							</small>
-						</h1>
-					</div><!-- /.page-header -->
-	
-					<div class="row">
-						<div class="col-xs-12">
-							<!-- PAGE CONTENT BEGINS -->
-							<div class="alert alert-block alert-success">
-								<button type="button" class="close" data-dismiss="alert">
-									<i class="ace-icon fa fa-times"></i>
-								</button>
-	
-								<i class="ace-icon fa fa-check green"></i>
-	
-								Welcome to
-								<strong class="green">
-									密友串串后台管理器
-								</strong>，下面开始一天的快乐工作。
-							</div>
-	
-							<div class="row">
-								<div class="space-6"></div>
-	
-								<div class="col-md-12 infobox-container">
-<!-- 									<div class="infobox infobox-green"> -->
-<!-- 										<div class="infobox-icon"> -->
-<!-- 											<i class="ace-icon fa fa-comments"></i> -->
-<!-- 										</div> -->
-	
-<!-- 										<div class="infobox-data"> -->
-<!-- 											<span class="infobox-data-number">32</span> -->
-<!-- 											<div class="infobox-content">收入</div> -->
-<!-- 										</div> -->
-	
-<!-- 										<div class="stat stat-success">8%</div> -->
-<!-- 									</div> -->
-	
-<!-- 									<div class="infobox infobox-blue"> -->
-<!-- 										<div class="infobox-icon"> -->
-<!-- 											<i class="ace-icon fa fa-twitter"></i> -->
-<!-- 										</div> -->
-	
-<!-- 										<div class="infobox-data"> -->
-<!-- 											<span class="infobox-data-number">11</span> -->
-<!-- 											<div class="infobox-content">订单数</div> -->
-<!-- 										</div> -->
-	
-<!-- 										<div class="badge badge-success"> -->
-<!-- 											+32% -->
-<!-- 											<i class="ace-icon fa fa-arrow-up"></i> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-	
-<!-- 									<div class="infobox infobox-pink"> -->
-<!-- 										<div class="infobox-icon"> -->
-<!-- 											<i class="ace-icon fa fa-shopping-cart"></i> -->
-<!-- 										</div> -->
-	
-<!-- 										<div class="infobox-data"> -->
-<!-- 											<span class="infobox-data-number">8</span> -->
-<!-- 											<div class="infobox-content">用户</div> -->
-<!-- 										</div> -->
-<!-- 										<div class="stat stat-important">4%</div> -->
-<!-- 									</div> -->
-	
-<!-- 									<div class="infobox infobox-red"> -->
-<!-- 										<div class="infobox-icon"> -->
-<!-- 											<i class="ace-icon fa fa-flask"></i> -->
-<!-- 										</div> -->
-	
-<!-- 										<div class="infobox-data"> -->
-<!-- 											<span class="infobox-data-number">7</span> -->
-<!-- 											<div class="infobox-content">活跃用户</div> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-	
-<!-- 									<div class="infobox infobox-orange2"> -->
-<!-- 										<div class="infobox-chart"> -->
-<!-- 											<span class="sparkline" data-values="196,128,202,177,154,94,100,170,224"></span> -->
-<!-- 										</div> -->
-	
-<!-- 										<div class="infobox-data"> -->
-<!-- 											<span class="infobox-data-number">6,251</span> -->
-<!-- 											<div class="infobox-content">pageviews</div> -->
-<!-- 										</div> -->
-	
-<!-- 										<div class="badge badge-success"> -->
-<!-- 											7.2% -->
-<!-- 											<i class="ace-icon fa fa-arrow-up"></i> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-	
-<!-- 									<div class="infobox infobox-blue2"> -->
-<!-- 										<div class="infobox-progress"> -->
-<!-- 											<div class="easy-pie-chart percentage" data-percent="42" data-size="46"> -->
-<!-- 												<span class="percent">42</span>% -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-	
-<!-- 										<div class="infobox-data"> -->
-<!-- 											<span class="infobox-text">traffic used</span> -->
-	
-<!-- 											<div class="infobox-content"> -->
-<!-- 												<span class="bigger-110">~</span> -->
-<!-- 												58GB remaining -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-	
-<!-- 									<div class="space-6"></div> -->
-	
-									<div class="infobox infobox-green infobox-large infobox-dark">
-										<div class="infobox-progress">
-											<div class="easy-pie-chart percentage" data-percent="61" data-size="39">
-												<span class="percent">61</span>%
-											</div>
-										</div>
-	
-										<div class="infobox-data">
-											<div class="infobox-content">Task</div>
-											<div class="infobox-content">Completion</div>
-										</div>
-									</div>
-	
-									<div class="infobox infobox-blue infobox-large infobox-dark">
-										<div class="infobox-chart">
-											<span class="sparkline" data-values="3,4,2,3,4,4,2,2"></span>
-										</div>
-	
-										<div class="infobox-data">
-											<div class="infobox-content">Earnings</div>
-											<div class="infobox-content">$32,000</div>
-										</div>
-									</div>
-	
-									<div class="infobox infobox-grey infobox-large infobox-dark">
-										<div class="infobox-icon">
-											<i class="ace-icon fa fa-download"></i>
-										</div>
-	
-										<div class="infobox-data">
-											<div class="infobox-content">Downloads</div>
-											<div class="infobox-content">1,205</div>
-										</div>
-									</div>
-									
-									<div class="infobox infobox-grey infobox-large infobox-dark">
-										<div class="infobox-icon">
-											<i class="ace-icon fa fa-download"></i>
-										</div>
-	
-										<div class="infobox-data">
-											<div class="infobox-content">Downloads</div>
-											<div class="infobox-content">1,205</div>
-										</div>
-									</div>
-								</div>
-	
-								<div class="vspace-12-sm"></div>
-	
-								<div class="col-md-12">
-									<div class="widget-box transparent">
-										<div class="widget-header widget-header-flat">
-											<h4 class="widget-title lighter">
-												<i class="ace-icon fa fa-signal"></i>
-												订单
-											</h4>
-	
-											<div class="widget-toolbar">
-												<a href="#" data-action="collapse">
-													<i class="ace-icon fa fa-chevron-up"></i>
-												</a>
-											</div>
-										</div>
-	
-										<div class="widget-body">
-											<div class="widget-main padding-4">
-												<div id="sales-charts"></div>
-											</div><!-- /.widget-main -->
-										</div><!-- /.widget-body -->
-										
-										<div class="hr hr8 hr-double"></div>
-										
-										<div class="clearfix">
-											<div class="grid3">
-												<span class="grey">
-<!-- 															<i class="ace-icon fa fa-facebook-square fa-2x blue"></i> -->
-													&nbsp; 订单总数
-												</span>
-												<h4 class="bigger pull-right">1,255</h4>
-											</div>
+		            	
+		                <div class="row">
+		                    <div class="col-sm-4">
+		                        <div class="row row-sm text-center">
+		                            <div class="col-xs-6">
+		                                <div class="panel padder-v item">
+		                                    <div class="h1 text-info font-thin h1">521</div>
+		                                    <span class="text-muted text-xs">同比增长</span>
+		                                    <div class="top text-right w-full">
+		                                        <i class="fa fa-caret-down text-warning m-r-sm"></i>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                            <div class="col-xs-6">
+		                                <div class="panel padder-v item bg-info">
+		                                    <div class="h1 text-fff font-thin h1">521</div>
+		                                    <span class="text-muted text-xs">今日访问</span>
+		                                    <div class="top text-right w-full">
+		                                        <i class="fa fa-caret-down text-warning m-r-sm"></i>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                            <div class="col-xs-6">
+		                                <div class="panel padder-v item bg-primary">
+		                                    <div class="h1 text-fff font-thin h1">521</div>
+		                                    <span class="text-muted text-xs">销售数量</span>
+		                                    <div class="top text-right w-full">
+		                                        <i class="fa fa-caret-down text-warning m-r-sm"></i>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                            <div class="col-xs-6">
+		                                <div class="panel padder-v item">
+		                                    <div class="font-thin h1">$129</div>
+		                                    <span class="text-muted text-xs">近日盈利</span>
+		                                    <div class="bottom text-left">
+		                                        <i class="fa fa-caret-up text-warning m-l-sm"></i>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    <div class="col-sm-8">
+		                        <div class="ibox float-e-margins">
+		                            <div class="ibox-title" style="border-bottom:none;background:#fff;">
+		                                <h5>服务器状态</h5>
+		                            </div>
+		                            <div class="ibox-content" style="border-top:none;">
+		                                <div id="flot-line-chart-moving" style="height:217px;">
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="row">
+		                    <div class="col-sm-9" style="padding-right:0;">
+		                        <div class="ibox float-e-margins">
+		                            <div class="ibox-title" style="border-bottom:none;background:#fff;">
+		                                <h5>往年数据</h5>
+		                            </div>
+		                            <div class="ibox-content" style="border-top:none;">
+		                                <div id="yesterday" style="height:217px;">
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    <div class="col-sm-3" style="padding-left:0;">
+		                        <div class="ibox float-e-margins">
+		                            <div class="ibox-content" style="border-top:none;background-color:#e4eaec;">
+		                                <h5>新增玩家</h5>
+		                                <div class="progress progress-striped active">
+		                                    <div style="width: 75%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="75" role="progressbar" class="progress-bar">
+		                                        <span class="sr-only"></span>
+		                                    </div>
+		                                </div>
+		                                <h5>流失玩家</h5>
+		                                <div class="progress progress-striped active">
+		                                    <div style="width: 75%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="75" role="progressbar" class="progress-bar progress-bar-warning">
+		                                        <span class="sr-only"></span>
+		                                    </div>
+		                                </div>
+		                                <h5>新增玩家</h5>
+		                                <div class="progress progress-striped active">
+		                                    <div style="width: 75%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="75" role="progressbar" class="progress-bar .progress-bar-danger">
+		                                        <span class="sr-only"></span>
+		                                    </div>
+		                                </div>
+		                                <h5>新增玩家</h5>
+		                                <div class="progress progress-striped active">
+		                                    <div style="width: 75%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="75" role="progressbar" class="progress-bar progress-bar-info">
+		                                        <span class="sr-only"></span>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="row">
+		                    <div class="col-sm-5">
+		                        <div class="ibox float-e-margins">
+		                        <div class="" id="ibox-content">
+		
+		                            <div id="vertical-timeline" class="vertical-container light-timeline">
+		                                <div class="vertical-timeline-block">
+		                                    <div class="vertical-timeline-icon navy-bg">
+		                                        <i class="fa fa-briefcase"></i>
+		                                    </div>
+		
+		                                    <div class="vertical-timeline-content">
+		                                        <h2>会议</h2>
+		                                        <p>上一年的销售业绩发布会。总结产品营销和销售趋势及销售的现状。
+		                                        </p>
+		                                        <a href="#" class="btn btn-sm btn-primary"> 更多信息</a>
+		                                        <span class="vertical-date">
+		                                    今天 <br>
+		                                    <small>2月3日</small>
+		                                </span>
+		                                    </div>
+		                                </div>
+		
+		                                <div class="vertical-timeline-block">
+		                                    <div class="vertical-timeline-icon blue-bg">
+		                                        <i class="fa fa-file-text"></i>
+		                                    </div>
+		
+		                                    <div class="vertical-timeline-content">
+		                                        <h2>给张三发送文档</h2>
+		                                        <p>发送上年度《销售业绩报告》</p>
+		                                        <a href="#" class="btn btn-sm btn-success"> 下载文档 </a>
+		                                        <span class="vertical-date">
+		                                    今天 <br>
+		                                    <small>2月3日</small>
+		                                </span>
+		                                    </div>
+		                                </div>
+		
+		                                <div class="vertical-timeline-block">
+		                                    <div class="vertical-timeline-icon lazur-bg">
+		                                        <i class="fa fa-coffee"></i>
+		                                    </div>
+		
+		                                    <div class="vertical-timeline-content">
+		                                        <h2>喝咖啡休息</h2>
+		                                        <p>喝咖啡啦，啦啦啦~~</p>
+		                                        <a href="#" class="btn btn-sm btn-info">更多</a>
+		                                        <span class="vertical-date"> 昨天 <br><small>2月2日</small></span>
+		                                    </div>
+		                                </div>
+		
+		                                <div class="vertical-timeline-block">
+		                                    <div class="vertical-timeline-icon yellow-bg">
+		                                        <i class="fa fa-phone"></i>
+		                                    </div>
+		
+		                                    <div class="vertical-timeline-content">
+		                                        <h2>给李四打电话</h2>
+		                                        <p>给李四打电话分配本月工作任务</p>
+		                                        <span class="vertical-date">昨天 <br><small>2月2日</small></span>
+		                                    </div>
+		                                </div>
+		
+		                                <div class="vertical-timeline-block">
+		                                    <div class="vertical-timeline-icon lazur-bg">
+		                                        <i class="fa fa-user-md"></i>
+		                                    </div>
+		
+		                                    <div class="vertical-timeline-content">
+		                                        <h2>公司年会</h2>
+		                                        <p>发年终奖啦，啦啦啦~~</p>
+		                                        <span class="vertical-date">前天 <br><small>2月1日</small></span>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                        </div>
+		                    </div>
+		                    <div class="col-sm-7">
+		                        <div class="ibox">
+		                            <div class="ibox-title">
+		                                <h5>所有项目</h5>
+		                                <div class="ibox-tools">
+		                                    <a href="projects.html" class="btn btn-primary btn-xs">创建新项目</a>
+		                                </div>
+		                            </div>
+		                            <div class="ibox-content">
+		                                <div class="row m-b-sm m-t-sm">
+		                                    <div class="col-md-1">
+		                                        <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> 刷新</button>
+		                                    </div>
+		                                    <div class="col-md-11">
+		                                        <div class="input-group">
+		                                            <input type="text" placeholder="请输入项目名称" class="input-sm form-control"> <span class="input-group-btn">
+		                                                <button type="button" class="btn btn-sm btn-primary"> 搜索</button> </span>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <div class="project-list">
+		                                    <table class="table table-hover">
+		                                        <tbody>
+		                                            <tr>
+		                                                <td class="project-status">
+		                                                    <span class="label label-primary">进行中
+		                                                </span></td>
+		                                                <td class="project-title">
+		                                                    <a href="project_detail.html">LIKE－一款能够让用户快速获得认同感的兴趣社交应用</a>
+		                                                    <br>
+		                                                    <small>创建于 2014.08.15</small>
+		                                                </td>
+		                                                <td class="project-completion">
+		                                                        <small>当前进度： 48%</small>
+		                                                        <div class="progress progress-mini">
+		                                                            <div style="width: 48%;" class="progress-bar"></div>
+		                                                        </div>
+		                                                </td>
+		                                                <td class="project-people">
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a3.jpg"></a>
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a1.jpg"></a>
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a2.jpg"></a>
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a4.jpg"></a>
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a5.jpg"></a>
+		                                                </td>
+		                                                <td class="project-actions">
+		                                                    <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
+		                                                    <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> 编辑 </a>
+		                                                </td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td class="project-status">
+		                                                    <span class="label label-primary">进行中
+		                                                </span></td>
+		                                                <td class="project-title">
+		                                                    <a href="project_detail.html">米莫说｜MiMO Show</a>
+		                                                    <br>
+		                                                    <small>创建于 2014.08.15</small>
+		                                                </td>
+		                                                <td class="project-completion">
+		                                                    <small>当前进度： 28%</small>
+		                                                    <div class="progress progress-mini">
+		                                                        <div style="width: 28%;" class="progress-bar"></div>
+		                                                    </div>
+		                                                </td>
+		                                                <td class="project-people">
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a7.jpg"></a>
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a6.jpg"></a>
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a3.jpg"></a>
+		                                                </td>
+		                                                <td class="project-actions">
+		                                                    <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
+		                                                    <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> 编辑 </a>
+		                                                </td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td class="project-status">
+		                                                    <span class="label label-default">已取消
+		                                                </span></td>
+		                                                <td class="project-title">
+		                                                    <a href="project_detail.html">商家与购物用户的交互试衣应用</a>
+		                                                    <br>
+		                                                    <small>创建于 2014.08.15</small>
+		                                                </td>
+		                                                <td class="project-completion">
+		                                                    <small>当前进度： 8%</small>
+		                                                    <div class="progress progress-mini">
+		                                                        <div style="width: 8%;" class="progress-bar"></div>
+		                                                    </div>
+		                                                </td>
+		                                                <td class="project-people">
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a5.jpg"></a>
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a3.jpg"></a>
+		                                                </td>
+		                                                <td class="project-actions">
+		                                                    <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
+		                                                    <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> 编辑 </a>
+		                                                </td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td class="project-status">
+		                                                    <span class="label label-primary">进行中
+		                                                </span></td>
+		                                                <td class="project-title">
+		                                                    <a href="project_detail.html">天狼---智能硬件项目</a>
+		                                                    <br>
+		                                                    <small>创建于 2014.08.15</small>
+		                                                </td>
+		                                                <td class="project-completion">
+		                                                    <small>当前进度： 83%</small>
+		                                                    <div class="progress progress-mini">
+		                                                        <div style="width: 83%;" class="progress-bar"></div>
+		                                                    </div>
+		                                                </td>
+		                                                <td class="project-people">
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a2.jpg"></a>
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a3.jpg"></a>
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a1.jpg"></a>
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a7.jpg"></a>
+		                                                </td>
+		                                                <td class="project-actions">
+		                                                    <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
+		                                                    <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> 编辑 </a>
+		                                                </td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td class="project-status">
+		                                                    <span class="label label-primary">进行中
+		                                                </span></td>
+		                                                <td class="project-title">
+		                                                    <a href="project_detail.html">乐活未来</a>
+		                                                    <br>
+		                                                    <small>创建于 2014.08.15</small>
+		                                                </td>
+		                                                <td class="project-completion">
+		                                                    <small>当前进度： 97%</small>
+		                                                    <div class="progress progress-mini">
+		                                                        <div style="width: 97%;" class="progress-bar"></div>
+		                                                    </div>
+		                                                </td>
+		                                                <td class="project-people">
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a4.jpg"></a>
+		                                                </td>
+		                                                <td class="project-actions">
+		                                                    <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
+		                                                    <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> 编辑 </a>
+		                                                </td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td class="project-status">
+		                                                    <span class="label label-primary">进行中
+		                                                </span></td>
+		                                                <td class="project-title">
+		                                                    <a href="project_detail.html">【私人医生项目】</a>
+		                                                    <br>
+		                                                    <small>创建于 2014.08.15</small>
+		                                                </td>
+		                                                <td class="project-completion">
+		                                                    <small>当前进度： 48%</small>
+		                                                    <div class="progress progress-mini">
+		                                                        <div style="width: 48%;" class="progress-bar"></div>
+		                                                    </div>
+		                                                </td>
+		                                                <td class="project-people">
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a1.jpg"></a>
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a2.jpg"></a>
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a4.jpg"></a>
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a5.jpg"></a>
+		                                                </td>
+		                                                <td class="project-actions">
+		                                                    <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
+		                                                    <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> 编辑 </a>
+		                                                </td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td class="project-status">
+		                                                    <span class="label label-primary">进行中
+		                                                </span></td>
+		                                                <td class="project-title">
+		                                                    <a href="project_detail.html">快狗家居</a>
+		                                                    <br>
+		                                                    <small>创建于 2014.08.15</small>
+		                                                </td>
+		                                                <td class="project-completion">
+		                                                    <small>当前进度： 28%</small>
+		                                                    <div class="progress progress-mini">
+		                                                        <div style="width: 28%;" class="progress-bar"></div>
+		                                                    </div>
+		                                                </td>
+		                                                <td class="project-people">
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a7.jpg"></a>
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a6.jpg"></a>
+		                                                    <a href="projects.html"><img alt="image" class="img-circle" src="img/a3.jpg"></a>
+		                                                </td>
+		                                                <td class="project-actions">
+		                                                    <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
+		                                                    <a href="projects.html#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> 编辑 </a>
+		                                                </td>
+		                                            </tr>
+		                                        </tbody>
+		                                    </table>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+        </div>
+    </div>
+    <!--右侧部分结束-->
+</body>
 
-											<div class="grid3">
-												<span class="grey">
-<!-- 															<i class="ace-icon fa fa-twitter-square fa-2x purple"></i> -->
-													&nbsp; 最近一个月订单
-												</span>
-												<h4 class="bigger pull-right">941</h4>
-											</div>
-
-											<div class="grid3">
-												<span class="grey">
-<!-- 															<i class="ace-icon fa fa-pinterest-square fa-2x red"></i> -->
-													&nbsp; 最近一个月销售额
-												</span>
-												<h4 class="bigger pull-right">1,050</h4>
-											</div>
-										</div>
-									</div><!-- /.widget-box -->
-												<div id="piechart-placeholder" style="display: none"></div>
-								</div><!-- /.col -->
-							</div><!-- /.row -->
-	
-							<div class="hr hr32 hr-dotted"></div>
-	
-							<div class="row">
-								<div class="col-sm-6">
-									<div class="widget-box transparent">
-										<div class="widget-header widget-header-flat">
-											<h4 class="widget-title lighter">
-												<i class="ace-icon fa fa-star orange"></i>
-												商品库存报警
-											</h4>
-	
-											<div class="widget-toolbar">
-												<a href="#" data-action="collapse">
-													<i class="ace-icon fa fa-chevron-up"></i>
-												</a>
-											</div>
-										</div>
-	
-										<div class="widget-body">
-											<div class="widget-main no-padding">
-												<table class="table table-bordered table-striped">
-													<thead class="thin-border-bottom">
-														<tr>
-															<th>
-																<i class="ace-icon fa fa-caret-right blue"></i>商品名称
-															</th>
-	
-															<th>
-																<i class="ace-icon fa fa-caret-right blue"></i>销量
-															</th>
-	
-															<th class="hidden-480">
-																<i class="ace-icon fa fa-caret-right blue"></i>库存
-															</th>
-														</tr>
-													</thead>
-	
-													<tbody>
-														<tr>
-															<td>internet.com</td>
-	
-															<td>
-																<small>
-																	<s class="red">$29.99</s>
-																</small>
-																<b class="green">$19.99</b>
-															</td>
-	
-															<td class="hidden-480">
-																<span class="label label-info arrowed-right arrowed-in">on sale</span>
-															</td>
-														</tr>
-	
-														<tr>
-															<td>online.com</td>
-	
-															<td>
-																<small>
-																	<s class="red"></s>
-																</small>
-																<b class="green">$16.45</b>
-															</td>
-	
-															<td class="hidden-480">
-																<span class="label label-success arrowed-in arrowed-in-right">approved</span>
-															</td>
-														</tr>
-	
-														<tr>
-															<td>newnet.com</td>
-	
-															<td>
-																<small>
-																	<s class="red"></s>
-																</small>
-																<b class="green">$15.00</b>
-															</td>
-	
-															<td class="hidden-480">
-																<span class="label label-danger arrowed">pending</span>
-															</td>
-														</tr>
-	
-														<tr>
-															<td>web.com</td>
-	
-															<td>
-																<small>
-																	<s class="red">$24.99</s>
-																</small>
-																<b class="green">$19.95</b>
-															</td>
-	
-															<td class="hidden-480">
-																<span class="label arrowed">
-																	<s>out of stock</s>
-																</span>
-															</td>
-														</tr>
-	
-														<tr>
-															<td>domain.com</td>
-	
-															<td>
-																<small>
-																	<s class="red"></s>
-																</small>
-																<b class="green">$12.00</b>
-															</td>
-	
-															<td class="hidden-480">
-																<span class="label label-warning arrowed arrowed-right">SOLD</span>
-															</td>
-														</tr>
-													</tbody>
-												</table>
-											</div><!-- /.widget-main -->
-										</div><!-- /.widget-body -->
-									</div><!-- /.widget-box -->
-								</div><!-- /.col -->
-								<div class="col-sm-6">
-									<div class="widget-box">
-										<div class="widget-header">
-											<h4 class="widget-title lighter smaller">
-												<i class="ace-icon fa fa-comment blue"></i>
-												消息
-											</h4>
-										</div>
-	
-										<div class="widget-body">
-											<div class="widget-main no-padding">
-												<div class="dialogs">
-													<div class="itemdiv dialogdiv">
-														<div class="user">
-															<img alt="Alexa's Avatar" src="../../assets/avatars/avatar1.png"  th:src="@{/assets/avatars/avatar1.png}" />
-														</div>
-	
-														<div class="body">
-															<div class="time">
-																<i class="ace-icon fa fa-clock-o"></i>
-																<span class="green">4 sec</span>
-															</div>
-	
-															<div class="name">
-																<a href="#">Alexa</a>
-															</div>
-															<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.</div>
-	
-															<div class="tools">
-																<a href="#" class="btn btn-minier btn-info">
-																	<i class="icon-only ace-icon fa fa-share"></i>
-																</a>
-															</div>
-														</div>
-													</div>
-	
-													<div class="itemdiv dialogdiv">
-														<div class="user">
-															<img alt="John's Avatar" src="../../assets/avatars/avatar.png" />
-														</div>
-	
-														<div class="body">
-															<div class="time">
-																<i class="ace-icon fa fa-clock-o"></i>
-																<span class="blue">38 sec</span>
-															</div>
-	
-															<div class="name">
-																<a href="#">John</a>
-															</div>
-															<div class="text">Raw denim you probably haven&#39;t heard of them jean shorts Austin.</div>
-	
-															<div class="tools">
-																<a href="#" class="btn btn-minier btn-info">
-																	<i class="icon-only ace-icon fa fa-share"></i>
-																</a>
-															</div>
-														</div>
-													</div>
-	
-													<div class="itemdiv dialogdiv">
-														<div class="user">
-															<img alt="Bob's Avatar" src="../../assets/avatars/user.jpg" />
-														</div>
-	
-														<div class="body">
-															<div class="time">
-																<i class="ace-icon fa fa-clock-o"></i>
-																<span class="orange">2 min</span>
-															</div>
-	
-															<div class="name">
-																<a href="#">Bob</a>
-																<span class="label label-info arrowed arrowed-in-right">admin</span>
-															</div>
-															<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.</div>
-	
-															<div class="tools">
-																<a href="#" class="btn btn-minier btn-info">
-																	<i class="icon-only ace-icon fa fa-share"></i>
-																</a>
-															</div>
-														</div>
-													</div>
-	
-													<div class="itemdiv dialogdiv">
-														<div class="user">
-															<img alt="Jim's Avatar" src="../../assets/avatars/avatar4.png" />
-														</div>
-	
-														<div class="body">
-															<div class="time">
-																<i class="ace-icon fa fa-clock-o"></i>
-																<span class="grey">3 min</span>
-															</div>
-	
-															<div class="name">
-																<a href="#">Jim</a>
-															</div>
-															<div class="text">Raw denim you probably haven&#39;t heard of them jean shorts Austin.</div>
-	
-															<div class="tools">
-																<a href="#" class="btn btn-minier btn-info">
-																	<i class="icon-only ace-icon fa fa-share"></i>
-																</a>
-															</div>
-														</div>
-													</div>
-	
-													<div class="itemdiv dialogdiv">
-														<div class="user">
-															<img alt="Alexa's Avatar" src="../../assets/avatars/avatar1.png" />
-														</div>
-	
-														<div class="body">
-															<div class="time">
-																<i class="ace-icon fa fa-clock-o"></i>
-																<span class="green">4 min</span>
-															</div>
-	
-															<div class="name">
-																<a href="#">Alexa</a>
-															</div>
-															<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-	
-															<div class="tools">
-																<a href="#" class="btn btn-minier btn-info">
-																	<i class="icon-only ace-icon fa fa-share"></i>
-																</a>
-															</div>
-														</div>
-													</div>
-												</div>
-	
-												<form>
-													<div class="form-actions">
-														<div class="input-group">
-															<input placeholder="Type your message here ..." type="text" class="form-control" name="message" />
-															<span class="input-group-btn">
-																<button class="btn btn-sm btn-info no-radius" type="button">
-																	<i class="ace-icon fa fa-share"></i>
-																	Send
-																</button>
-															</span>
-														</div>
-													</div>
-												</form>
-											</div><!-- /.widget-main -->
-										</div><!-- /.widget-body -->
-									</div><!-- /.widget-box -->
-								</div><!-- /.col -->
-							</div><!-- /.row -->
-	
-							<div class="hr hr32 hr-dotted"></div>
-	
-							<div class="row">
-								
-							</div><!-- /.row -->
-	
-							<!-- PAGE CONTENT ENDS -->
-						</div><!-- /.col -->
-					</div><!-- /.row -->
-				</div><!-- /.page-content -->
-			</div><!-- /.main-content -->
-			
-			<div th:replace="~{fragments/footer :: footer}">...</div>
-			
-		</div><!-- /.main-container -->
-	</body>
 </html>
